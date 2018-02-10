@@ -1,4 +1,3 @@
-<?php session_start();  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,10 +47,7 @@
           <hr id="home">
           <a class="btn btn-primary btn-xl js-scroll-trigger" href="avve2.php">L'expérience Village Vacances</a>
           <a class="btn btn-primary btn-xl js-scroll-trigger" href="hebergement2.php">Nos offres et réservations</a>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="contact1.php">Contact</a>
-         
-
-                                        
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="contact1.php">Contact</a>            
         </div>
       </div>
     </header>
