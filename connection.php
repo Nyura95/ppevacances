@@ -1,30 +1,5 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet"  href="../css/bootstrap-grid.min.css" >
-        <link rel="stylesheet"  href="../css/bootstrap.min.css" >
-        <link rel="stylesheet"  href="../css/bootstrap-reboot.min.css" >
-        <link rel="stylesheet"  href="../css/jquery-ui.min.css" >
-        <link rel="stylesheet"  href="css/creative.min.css" >
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-    </head>
-    <body>
-
-     
-    </body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
     <head>
 
@@ -67,14 +42,16 @@ and open the template in the editor.
         <header class="masthead">
             <div class="header-content">
                 <div class="header-content-inner">
-                      <form class="compte" action="trtlogin.php" method="POST"> 
-            <h2> IDENTIFIEZ-VOUS</h2>
-            <input class="btn btn-primary btn-xl js-scroll-trigger form" type="text" placeholder="Utilisateur" name="USER"> <br><br>
-            <input class="btn btn-primary btn-xl js-scroll-trigger form"type="password" placeholder="Mot de passe" name="MDP"> <br><br>
-            
-            <input class="btn btn-primary btn-xl js-scroll-trigger" type="submit" name="valide" value="Se connecter"> <br><br>
-            <a> Mot de passe oublié </a> <br>
-        </form> 
+            <form class="compte" action="trtlogin.php" method="POST" id='form'> 
+                <h2> IDENTIFIEZ-VOUS</h2>
+                <input class="btn btn-primary btn-xl js-scroll-trigger form" type="text" placeholder="Utilisateur" name="USER" id='USER'> <br><br>
+                <input class="btn btn-primary btn-xl js-scroll-trigger form"type="password" placeholder="Mot de passe" name="MDP" id='MDP'> <br><br>
+                <!-- div qui affichera les erreurs que l'on veut en js -->
+                <div style='color: red;display:none' id='error'></div>
+                
+                <input class="btn btn-primary btn-xl js-scroll-trigger" type="button" name="valide" id='valide' value="Se connecter"> <br><br>
+                <a> Mot de passe oublié </a> <br>
+            </form> 
 
                 </div>
             </div>
@@ -93,6 +70,80 @@ and open the template in the editor.
         <script src="js/creative.min.js"></script>
 
     </body>
+    <script>
+        var error = 'Une erreur est survenu !'
+        var nothing = 'Veuillez remplir le formulaire !'
+        var bad = 'Votre nom d\'utilissateur ou votre mot de passe ne sont pas bon !'
+        var connect = 'Veuillez vous connecter !'
 
+        // va afficher les erreurs
+        var showError = function(html) {
+            $('#error').show()
+            $('#error').html(html)
+        }
+        var hideError = function(html) {
+            $('#error').hide()
+            $('#error').html('')
+        }
+
+
+        // Executé une fois que la page et le DOM js est fini de charger
+        $(function() {
+
+            // Suivant l'url, on affiche les erreurs retourné par ton back
+            <?php if(ISSET($_GET['error'])) { ?>
+                // Montre la div
+                showError(error)
+            <?php } ?>
+            <?php if(ISSET($_GET['nothing'])) { ?>
+                // Montre la div
+                showError(nothing)
+            <?php } ?>
+            <?php if(ISSET($_GET['bad'])) { ?>
+                // Montre la div
+                showError(bad)
+            <?php } ?>
+            <?php if(ISSET($_GET['connect'])) { ?>
+                // Montre la div
+                showError(connect)
+            <?php } ?>
+            // ---------------
+
+            
+
+
+            $("#valide").on('click', function(e) {
+                var user = $('#USER');
+                var mdp = $('#MDP');
+                // On check si le formulaire est remplit
+                if(user.val() != '' && mdp.val() != '') {
+                    hideError()
+                    // le return stop le code, il n'ira pas plus loins
+                    return $('#form').submit()
+                } 
+
+                // Si on viens ici, alors c'est que l'un ou l'autre est vide. On regarde et on change en fonction
+                if(user.val() == '') {
+                    // Si il est vide, on l'affiche en rouge
+                    user.attr('class', user.attr('class').replace('btn-primary', 'btn-danger'))
+                    showError(nothing)
+                } else {
+                    // Sinon on l'affiche en primary
+                    user.attr('class', user.attr('class').replace('btn-danger', 'btn-primary'))
+                }
+
+                // Si on viens ici, alors c'est que l'un ou l'autre est vide. On regarde et on change en fonction
+                if(mdp.val() == '') {
+                    // Si il est vide, on l'affiche en rouge
+                    mdp.attr('class', mdp.attr('class').replace('btn-primary', 'btn-danger'))
+                    showError(nothing)
+                } else {
+                    // Sinon on l'affiche en primary
+                    mdp.attr('class', mdp.attr('class').replace('btn-danger', 'btn-primary'))
+                }
+
+            })
+        });
+    </script>
 </html>
 

@@ -1,6 +1,15 @@
-<?php session_start(); ?>
+<?php 
+// On start la session
+session_start(); 
+// Si USER est renseigné, c'est que l'utilisateur c'est connecté
+// sinon on le retourne à la connection (tu peux mettre une erreur si tu veux)
+if(!isset($_SESSION['USER'])) {
+    header("location:../connection.php");
+    //header("location:../connection.php?connect");
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
     <head>
 
