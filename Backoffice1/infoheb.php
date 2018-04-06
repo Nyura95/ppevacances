@@ -34,18 +34,10 @@
 
 
         if (!empty($_GET["max"])) {
-            $req = " SELECT * FROM TYPE_HEB 
-                                    INNER JOIN HEBERGEMENT on TYPE_HEB.CODETYPEHEB = HEBERGEMENT.CODETYPEHEB 
-                                    WHERE noheb= " . $_GET['noheb'] . "
-                                    AND TARIFSEMHEB  <= " . $_GET['max'] . "
-            ";
+            $req = "SELECT * FROM TYPE_HEB INNER JOIN HEBERGEMENT on TYPE_HEB.CODETYPEHEB = HEBERGEMENT.CODETYPEHEB WHERE noheb= " . $_GET['noheb'] . " AND TARIFSEMHEB  <= " . $_GET['max'];
         } else {
-            $req = " SELECT * FROM TYPE_HEB 
-                                    INNER JOIN HEBERGEMENT on TYPE_HEB.CODETYPEHEB = HEBERGEMENT.CODETYPEHEB 
-                                WHERE noheb= " . $_GET['noheb'] . "
-           ";
+            $req = "SELECT * FROM TYPE_HEB INNER JOIN HEBERGEMENT on TYPE_HEB.CODETYPEHEB = HEBERGEMENT.CODETYPEHEB WHERE noheb= " . $_GET['noheb'];
         }
-
         $res = mysqli_query($con, $req);
         ?>
 
@@ -84,7 +76,7 @@
       </div>
     </nav>
 
-            <header class="masthead1" style="background-image: url('../../image/<?php echo $PHOTOHEB ?>') !important; background-size: cover;
+            <header class="masthead1" style="background-image: url('../img/image/<?php echo $PHOTOHEB ?>') !important; background-size: cover;
                     height: 100%;">
                 <div class="header-content">
                     <div class="header-content-inner">

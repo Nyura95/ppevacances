@@ -103,27 +103,14 @@
                             include '../sql.php';
 
                            if (!empty($_GET["max"])) {
-                                $req = " SELECT * FROM TYPE_HEB 
-                                    INNER JOIN HEBERGEMENT on TYPE_HEB.CODETYPEHEB = HEBERGEMENT.CODETYPEHEB 
-             WHERE TARIFSEMHEB  <= " . $_GET['max'] . "
-                 AND NOMTYPEHEB = 'appartement'
-           
-            
-
-            ";
+                                $req = " SELECT * FROM TYPE_HEB INNER JOIN HEBERGEMENT on TYPE_HEB.CODETYPEHEB = HEBERGEMENT.CODETYPEHEB WHERE TARIFSEMHEB  <= " . $_GET['max'] . " AND NOMTYPEHEB = 'appartement'";
                             } else {
-                                $req = " SELECT * FROM TYPE_HEB 
-                                    INNER JOIN HEBERGEMENT on TYPE_HEB.CODETYPEHEB = HEBERGEMENT.CODETYPEHEB
-                                    WHERE NOMTYPEHEB = 'appartement'
-                                  
-                                   
-           ";
+                                $req = " SELECT * FROM TYPE_HEB INNER JOIN HEBERGEMENT on TYPE_HEB.CODETYPEHEB = HEBERGEMENT.CODETYPEHEB WHERE NOMTYPEHEB = 'appartement'";
                             }
                             ?> 
 
 
-                            <?php $res = mysqli_query($con, $req);
-                            ?>
+                            <?php $res = mysqli_query($con, $req); ?>
 
 
                             <?php while ($ligne = mysqli_fetch_array($res)): ?>
@@ -138,7 +125,7 @@
                                 <?php $NOMTYPEHEB = $ligne["NOMTYPEHEB"]; ?>
                                 <div class="col-lg-4 col-sm-6">
                                     <a class="portfolio-box" href="infoheb.php?noheb=<?php echo $NOHEB ?>">
-                                        <img class="img-fluid" src="../../image/<?php echo $PHOTOHEB ?>" alt="">
+                                        <img class="img-fluid" src="../img/image/<?php echo $PHOTOHEB ?>" alt="">
                                         <div class="portfolio-box-caption">
                                             <div class="portfolio-box-caption-content">
 
@@ -221,7 +208,7 @@
                                 <?php $NOMTYPEHEB = $ligne["NOMTYPEHEB"]; ?>
                                 <div class="col-lg-4 col-sm-6">
                                     <a class="portfolio-box" href="infoheb.php?noheb=<?php echo $NOHEB ?>">
-                                        <img class="img-fluid" src="../../image/<?php echo $PHOTOHEB ?>" alt="">
+                                        <img class="img-fluid" src="../img/image/<?php echo $PHOTOHEB ?>" alt="">
                                         <div class="portfolio-box-caption">
                                             <div class="portfolio-box-caption-content">
 
@@ -306,7 +293,7 @@
                                 <?php $NOMTYPEHEB = $ligne["NOMTYPEHEB"]; ?>
                                 <div class="col-lg-4 col-sm-6">
                                     <a class="portfolio-box" href="infoheb.php?noheb=<?php echo $NOHEB ?>">
-                                        <img class="img-fluid" src="../../image/<?php echo $PHOTOHEB ?>" alt="">
+                                        <img class="img-fluid" src="../img/image/<?php echo $PHOTOHEB ?>" alt="">
                                         <div class="portfolio-box-caption">
                                             <div class="portfolio-box-caption-content">
 
@@ -391,7 +378,7 @@
                                 <?php $NOMTYPEHEB = $ligne["NOMTYPEHEB"]; ?>
                                 <div class="col-lg-4 col-sm-6">
                                     <a class="portfolio-box" href="infoheb.php?noheb=<?php echo $NOHEB ?>">
-                                        <img class="img-fluid" src="../../image/<?php echo $PHOTOHEB ?>" alt="">
+                                        <img class="img-fluid" src="../img/image/<?php echo $PHOTOHEB ?>" alt="">
                                         <div class="portfolio-box-caption">
                                             <div class="portfolio-box-caption-content">
 
