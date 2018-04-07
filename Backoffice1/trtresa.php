@@ -9,11 +9,11 @@
         
        
         include '../sql.php';
-	$req =  "INSERT INTO RESA (NOHEB,  DATEDEBSEM , USER, CODEETATRESA ,DATERESA,  DATEARRHES, MONTANTARRHES, NBOCCUPANT , TARIFSEMRESA )
-			VALUES($NOHEB','$DATEDEBSEM' ,'$USER', '1','$DATEDEBSEM', '$DATEDEBSEM', '$MONTANTARRHES', '$NBOCCUPANT', '$MONTANTARRHES');";
+	$req =  "INSERT INTO RESA (NOHEB,  DATEDEBSEM , USER, CODEETATRESA ,DATERESA,  DATEARRHES, MONTANTARRHES, NBOCCUPANT , TARIFSEMRESA ) VALUES('$NOHEB','$DATEDEBSEM' ,'$USER', '1','$DATEDEBSEM', '$DATEDEBSEM', '$MONTANTARRHES', '$NBOCCUPANT', '$MONTANTARRHES');";
+        echo $req;
+        $res = mysqli_query($con, $req); 
+        mysqli_close($con); 
+        header("location:hebergement2.php");
 
-	$res = mysqli_query($con, $req, $rep); 
-         echo $req;
-	mysqli_close($con); 
        
 	

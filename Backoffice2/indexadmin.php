@@ -27,6 +27,17 @@
         <!-- Custom styles for this template -->
         <link href="../css/creative.min.css" rel="stylesheet">
 
+				<!-- Bootstrap core JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+        <script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     </head>
 
     <body id="page-top">
@@ -125,7 +136,7 @@
                                 <?php $NOMTYPEHEB = $ligne["NOMTYPEHEB"]; ?>
                                 <div class="col-lg-4 col-sm-6">
                                     <a class="portfolio-box" href="noheb.php?noheb=<?php echo $NOHEB ?>">
-                                        <img class="img-fluid" src="../../image/<?php echo $PHOTOHEB ?>" alt="">
+                                        <img class="img-fluid" src="../img/image/<?php echo $PHOTOHEB ?>" alt="">
                                         <div class="portfolio-box-caption">
                                             <div class="portfolio-box-caption-content">
 
@@ -208,7 +219,7 @@
                                 <?php $NOMTYPEHEB = $ligne["NOMTYPEHEB"]; ?>
                                 <div class="col-lg-4 col-sm-6">
                                     <a class="portfolio-box" href="noheb.php?noheb=<?php echo $NOHEB ?>">
-                                        <img class="img-fluid" src="../../image/<?php echo $PHOTOHEB ?>" alt="">
+                                        <img class="img-fluid" src="../img/image/<?php echo $PHOTOHEB ?>" alt="">
                                         <div class="portfolio-box-caption">
                                             <div class="portfolio-box-caption-content">
 
@@ -293,7 +304,7 @@
                                 <?php $NOMTYPEHEB = $ligne["NOMTYPEHEB"]; ?>
                                 <div class="col-lg-4 col-sm-6">
                                     <a class="portfolio-box" href="noheb.php?noheb=<?php echo $NOHEB ?>">
-                                        <img class="img-fluid" src="../../image/<?php echo $PHOTOHEB ?>" alt="">
+                                        <img class="img-fluid" src="../img/image/<?php echo $PHOTOHEB ?>" alt="">
                                         <div class="portfolio-box-caption">
                                             <div class="portfolio-box-caption-content">
 
@@ -378,7 +389,7 @@
                                 <?php $NOMTYPEHEB = $ligne["NOMTYPEHEB"]; ?>
                                 <div class="col-lg-4 col-sm-6">
                                     <a class="portfolio-box" href="noheb.php?noheb=<?php echo $NOHEB ?>">
-                                        <img class="img-fluid" src="../../image/<?php echo $PHOTOHEB ?>" alt="">
+                                        <img class="img-fluid" src="../img/image/<?php echo $PHOTOHEB ?>" alt="">
                                         <div class="portfolio-box-caption">
                                             <div class="portfolio-box-caption-content">
 
@@ -457,12 +468,11 @@
                             </section>
                         </div>
                         <br>      <button id="opener" class="btn btn-primary btn-xl js-scroll-trigger"> Ajouter un hébergement</button> <br>
-                        <div id="promo"style="border: 1px solid #57D53B; color: #57D53B; "> <?php
-                            if ($_GET['info'] == 'ok') {
-                                echo "L'hébergement a bien été aujouté ";
-                            }
-                            ?> 
-                        </div>
+                        <?php if (isset($_GET['info']) && $_GET['info'] == 'ok') {?>
+													<div id="promo"style="border: 1px solid #57D53B; color: #57D53B; "> 
+															L'hébergement a bien été aujouté
+													</div>
+                        <?php } ?>
                         <br> <br>
                     </div>
                 </div>
@@ -507,19 +517,14 @@
                                     INNER JOIN TYPE_HEB on HEBERGEMENT.CODETYPEHEB = TYPE_HEB.CODETYPEHEB
                                     INNER JOIN COMPTE on RESA.USER = COMPTE.USER
                                     INNER JOIN SEMAINE on RESA.DATEDEBSEM = SEMAINE.DATEDEBSEM
-                                    WHERE RESA.DATEDEBSEM  = '" . $_GET['DATEDEBSEM'] . "'
-  
-            ";
+                                    WHERE RESA.DATEDEBSEM  = '" . $_GET['DATEDEBSEM'] . "'";
                             } else {
                                 $req = " SELECT * FROM RESA 
                                     INNER JOIN HEBERGEMENT on RESA.NOHEB = HEBERGEMENT.NOHEB
                                     INNER JOIN ETAT_RESA on RESA.CODEETATRESA = ETAT_RESA.CODEETATRESA
                                     INNER JOIN TYPE_HEB on HEBERGEMENT.CODETYPEHEB = TYPE_HEB.CODETYPEHEB
                                     INNER JOIN COMPTE on RESA.USER = COMPTE.USER
-                                    INNER JOIN SEMAINE on RESA.DATEDEBSEM = SEMAINE.DATEDEBSEM
-                                    
-                            
-           ";
+                                    INNER JOIN SEMAINE on RESA.DATEDEBSEM = SEMAINE.DATEDEBSEM";
                             }
                             ?> 
 
@@ -551,9 +556,9 @@
 
 
 
-                                <div class="col-lg-4 col-sm-6">
+                                <div class="col-lg-4 col-sm-6" style="position: relative;">
                                     <a class="portfolio-box">
-                                        <img class="img-fluid" src="../../image/<?php echo $PHOTOHEB ?>" alt="">
+                                        <img class="img-fluid" src="../img/image/<?php echo $PHOTOHEB ?>" alt="">
                                         <div class="portfolio-box-caption">
                                             <div class="portfolio-box-caption-content">
 
@@ -567,36 +572,62 @@
 
                                                     <br>
                                                     Ref: <?php echo $NOHEB ?> <br>
+                                                    <div class="col-lg-12 col-sm-12" style="position: absolute; bottom: 0; left: 0;">
+                                                        <div class="col-lg-12 col-sm-12" >
+                                                            <input id="<?php echo $NOHEB; ?>" type="button" value="modifier" class="opener-update" style="float: left; cursor:pointer;"/>
+                                                            <input id="<?php echo $NOHEB; ?>" type="button" value="supprimer" class="opener-delete" style="float: right; cursor:pointer;"/>
+                                                        </div>
+                                                    </div>
 
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
-                                    <div class="dialog2" title="Basic dialog">
-                                        <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+
+                                    <div class="dialog-<?php echo $NOHEB; ?>-update" title="Modifier la reservation">
+																		<form method="POST" action="actionResa.php">
+																				<input type="hidden" name="update" value="<?php echo $NOHEB; ?>" />
+																				<table>
+																					<tr>
+																						<td>TARIFSEMRESA</td>
+																						<td><input type="text" value="<?php echo $TARIFSEMRESA; ?>" name="TARIFSEMRESA" /></td>
+																					</tr>
+																				</table>
+																				<input type="submit" value="Valider" />
+																			</form>
                                     </div>
-                                  
-                                    <button class="opener2">Open Dialog</button>
-                                    <input type="submit" name="modifresa1" value="Modifier">
-                                    <input type="submit" name="anuller" value="Annuler">
+																		<div class="dialog-<?php echo $NOHEB; ?>-delete" title="Supprimer la reservation">
+																			<form method="POST" action="actionResa.php">
+																				<input type="hidden" name="delete" value="<?php echo $NOHEB; ?>" />
+																				<input type="submit" value="Valider" />
+																			</form>
+                                    </div>
+																		<script>
+
+																			$(".dialog-<?php echo $NOHEB; ?>-update").dialog({
+																				autoOpen: false,
+																					show: {
+																						effect: "blind",
+																						duration: 1000
+																					},
+																					hide: {
+																						effect: "explode",
+																						duration: 1000
+																					}
+																			});
+																			$(".dialog-<?php echo $NOHEB; ?>-delete").dialog({
+																				autoOpen: false,
+																					show: {
+																						effect: "blind",
+																						duration: 1000
+																					},
+																					hide: {
+																						effect: "explode",
+																						duration: 1000
+																					}
+																			});
+																		</script>
                                 </div>
-                                <script>
-                                    $(function () {
-                                    $(".dialog2").dialog({
-                                    autoOpen: false,
-                                            show: {
-                                            effect: "blind",
-                                                    duration: 1000
-                                            },
-                                            hide: {
-                                            effect: "explode",
-                                                    duration: 1000
-                                            }
-                                    });
-                                            $("#opener2").on("click", function () {
-                                    $(".dialog2").dialog("open");
-                                    });
-                                </script>
 <?php endwhile; ?>
                             <?php mysqli_close($con); ?>
 
@@ -657,13 +688,11 @@ while ($row = $res->fetch_assoc()) {
                         </div>
                         <br> 
                         <button id="opener1" class="btn btn-primary btn-xl js-scroll-trigger"> Ajouter une réservation</button> <br>
-                        <div id="promo"style="border: 1px solid #57D53B; color: #57D53B; "> 
-<?php
-if ($_GET['info'] == 'vad') {
-    echo "La réservation a bien été aujouté ";
-}
-?> 
-                        </div>
+                        <?php if (isset($_GET['info']) && $_GET['info'] == 'vad') { ?>
+                            <div id="promo"style="border: 1px solid #57D53B; color: #57D53B; "> 
+                                La réservation a bien été aujouté
+                            </div>
+                        <?php } ?> 
                         <br> <br>
                     </div>
                 </div>
@@ -678,7 +707,7 @@ if ($_GET['info'] == 'vad') {
                         <h2 class="section-heading text-white"> Les vacanciers</h2>
                         <hr class="light">
                         <p class="text-faded">
-                            <a href="codeenclaire.php" <button  class="btn btn-primary3 btn-xl js-scroll-trigger">Accéder à la liste des identifiants</button> <br> </a>
+                            <a href="codeenclaire.php"> <button  class="btn btn-primary3 btn-xl js-scroll-trigger">Accéder à la liste des identifiants</button> <br> </a>
                         </p>
 
                     </div>
@@ -686,60 +715,61 @@ if ($_GET['info'] == 'vad') {
             </div>
         </section>
 
-
-        <!-- Bootstrap core JavaScript -->
-        <script src="../vendor/jquery/jquery.min.js"></script>
-        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Plugin JavaScript -->
-        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-        <script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
-        <script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
         <!-- Custom scripts for this template -->
         <script src="../js/creative.min.js"></script>
         <script type="text/javascript">
-                                        $(function () {
-                                        $("#dialog").dialog({
-                                        autoOpen: false,
-                                                show: {
-                                                effect: "blind",
-                                                        duration: 1000
-                                                },
-                                                hide: {
-                                                effect: "blind",
-                                                        duration: 1000
-                                                }
-                                        });
-                                                $("#opener").on("click", function () {
-                                        $("#dialog").dialog("open");
-                                        });
-                                        });
-                                        $(function () {
-                                        $("#dialog1").dialog({
-                                        autoOpen: false,
-                                                show: {
-                                                effect: "blind",
-                                                        duration: 1000
-                                                },
-                                                hide: {
-                                                effect: "blind",
-                                                        duration: 1000
-                                                }
-                                        });
-                                                $("#opener1").on("click", function () {
-                                        $("#dialog1").dialog("open");
-                                        });
-                                        });
+					$(function () {
+						$("#dialog").dialog({
+							autoOpen: false,
+							show: {
+								effect: "blind",
+								duration: 1000
+							},
+							hide: {
+								effect: "blind",
+								duration: 1000
+							}
+						});
+						$("#opener").on("click", function () {
+							$("#dialog").dialog("open");
+						});
+					});
 
+					$(function () {
+						$("#dialog1").dialog({
+							autoOpen: false,
+							show: {
+								effect: "blind",
+									duration: 1000
+								},
+								hide: {
+								effect: "blind",
+									duration: 1000
+								}
+						});
+						$("#opener1").on("click", function () {
+							$("#dialog1").dialog("open");
+						});
+					});
 
+					
 
+					$(".opener-update").on("click", function () {
+						$(".dialog-" + this.id + "-update").dialog("open");
+					});
+					
+					$(".opener-delete").on("click", function () {
+						$(".dialog-" + this.id + "-delete").dialog("open");
+					});
+
+					<?php if (isset($_GET['delete'])) {?>
+						alert(`La reservation ${<?php echo $_GET['delete'] ?>} à été supprimée`)
+          <?php } ?>
+					<?php if (isset($_GET['update'])) {?>
+						alert(`La reservation ${<?php echo $_GET['update'] ?>} à été mise à jour`)
+          <?php } ?>
         </script>
 
     </body>
 
 </html>
-
-

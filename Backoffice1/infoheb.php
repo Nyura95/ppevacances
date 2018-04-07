@@ -163,10 +163,26 @@
                                 <select name="DATEDEBSEM" class="btn btn-primary btn-xl js-scroll-trigger">
 			<?php include '../sql.php';   
 
-					$res = $con ->query("SELECT * FROM SEMAINE");
-					while ($row = $res->fetch_assoc()) {
-					echo "<option> ".$row['DATEDEBSEM']."</option> ";
-					}
+
+
+                    $req = "SELECT * FROM SEMAINE";
+                    $week = mysqli_query($con, $req);  
+
+                    $req = "SELECT * FROM RESA WHERE NOHEB = ".$NOHEB;
+                    $resa = mysqli_query($con, $req);  
+
+                    foreach ($week as $key => $value) {
+                        $check = true;
+                        foreach ($resa as $key2 => $value2) {
+                            
+                            if($value2["DATEDEBSEM"] == $value["DATEDEBSEM"]) {
+                                $check = false;
+                            }
+                        }
+                        if($check) {
+                            echo "<option> ".$value['DATEDEBSEM']."</option> ";
+                        }
+                    }
 			?>
                 </select> <br> <br>
               

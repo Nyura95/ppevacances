@@ -45,6 +45,7 @@
 
 
         <?php while ($ligne = mysqli_fetch_array($res)): ?>
+
             <?php $PHOTOHEB = $ligne["PHOTOHEB"]; ?>
             <?php $NOMHEB = $ligne["NOMHEB"]; ?>
             <?php $SURFACEHEB = $ligne["SURFACEHEB"]; ?>
@@ -79,7 +80,7 @@
     </nav>
 
 
-            <header class="masthead1" style="background-image: url('../../image/<?php echo $PHOTOHEB ?>') !important; background-size: cover;
+            <header class="masthead1" style="background-image: url('../img/image/<?php echo $PHOTOHEB ?>') !important; background-size: cover;
             height: 100%;"> 
                 <div class="header-content">
                     <div class="header-content-inner">
@@ -143,13 +144,14 @@
 
                             </ul>
                            <form action="trtmodifheb.php" method="POST">  
-                               <input type="text" value="<?php echo $NOMHEB ?>"> <br>
-                               <input type="text" value="<?php echo $DESCRIHEB ?>" > <br>
-                               <input type="text" value="<?php echo $NBPLACEHEB ?>" >  <br>
-                               <input type="text" value="<?php echo $SURFACEHEB ?>"> <br>
-                               <input type="text" value="<?php echo $ORIENTATIONHEB ?>"><br>
-                               <input type="text" value="<?php echo $TARIFSEMHEB ?>"><br>
-                               <input type="text" value="<?php echo $SECTEURHEB ?>"><br>
+                               <input type="hidden" value="<?php echo $NOHEB ?>" name="NOHEB"> <br>
+                               <input type="text" value="<?php echo $NOMHEB ?>" name="NOMHEB"> <br>
+                               <input type="text" value="<?php echo $DESCRIHEB ?>" name="DESCRIHEB" > <br>
+                               <input type="text" value="<?php echo $NBPLACEHEB ?>" name="NBPLACEHEB">  <br>
+                               <input type="text" value="<?php echo $SURFACEHEB ?>" name="SURFACEHEB"> <br>
+                               <input type="text" value="<?php echo $ORIENTATIONHEB ?>" name="ORIENTATIONHEB"><br>
+                               <input type="text" value="<?php echo $TARIFSEMHEB ?>" name="TARIFSEMHEB"><br>
+                               <input type="text" value="<?php echo $SECTEURHEB ?>" name="SECTEURHEB"><br>
                                       
                                       
                            <input class="bouton" type="submit" name="modifier" value="Modifer" onclick="modif()"> </form> 
@@ -164,7 +166,7 @@
 
 
 
-                    <form method="post" enctype="multipart/form-data" action="trtsup.php">
+                    <form method="post" action="trtsup.php">
                          <input type="hidden" name="numLogement" value="<?php echo $NOHEB ?>"> <br>
                         <input class="bouton" type="submit" name="supprimer" value="Supprimer" onclick="supp()">
                          <script>

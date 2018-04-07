@@ -111,7 +111,7 @@
                                <?php $NOMTYPEHEB = $ligne["NOMTYPEHEB"]; ?>
                                 <div class="col-lg-4 col-sm-6">
                                     <a class="portfolio-box">
-                                        <img class="img-fluid" src="../image/<?php echo $PHOTOHEB ?>" alt="">
+                                        <img class="img-fluid" src="./img/image/<?php echo $PHOTOHEB ?>" alt="">
                                         <div class="portfolio-box-caption">
                                             <div class="portfolio-box-caption-content">
 
